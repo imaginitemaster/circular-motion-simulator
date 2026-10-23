@@ -158,13 +158,13 @@ public class AnimationsPanel extends JPanel{
     }
 
     //This timer runs code at 60 FPS
-    Timer timer = new Timer(50/3,e->{
+    Timer timer = new Timer(17,e->{
         //Set angle back to 0
         if(angle>=2*Math.PI){
             angle=0;
         }
         if(!pause){
-            angle+=(Math.PI/600)*ballSpeed/pathRadius;
+            angle+=(0.017)*ballSpeed/pathRadius;
         }
         sin = Math.sin(angle);
         cos = Math.cos(angle);
