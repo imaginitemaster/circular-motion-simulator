@@ -26,9 +26,9 @@ public class AnimationsPanel extends JPanel{
     //In this code, any variable starting with "c" refers to centre
 
     //ball's mass, speed and path radius
-    int ballMass = 1;
-    int ballSpeed = 5;
-    int pathRadius = 10;
+    int ballMass;
+    int ballSpeed;
+    int pathRadius;
 
     //radlength max = 280
     private int radLength = 28*pathRadius;
@@ -155,7 +155,7 @@ public class AnimationsPanel extends JPanel{
     Timer timer = new Timer(17,e->{
         //Set angle back to 0
         if(angle>=2*Math.PI){
-            angle=0;
+            angle-=2*Math.PI;
         }
         if(!pause){
             angle+=(0.017)*ballSpeed/pathRadius;
@@ -180,7 +180,6 @@ public class AnimationsPanel extends JPanel{
         sin = Math.sin(angle);
         cos = Math.cos(angle);
     }
-
 
     public void setPause(boolean pause){
         this.pause = pause;

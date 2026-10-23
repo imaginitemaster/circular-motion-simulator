@@ -1,6 +1,6 @@
 public class SimulationModel {
     int ballMass = 1;
-    int ballSpeed = 5;
+    int ballSpeed = 10;
     int pathRad = 10;
     public SimulationModel(){
 

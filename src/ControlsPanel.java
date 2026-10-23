@@ -17,7 +17,7 @@ public class ControlsPanel extends JPanel implements ActionListener {
 
     Dimension buttonSize = new Dimension(30,30);
 
-    public ControlsPanel(Timer timer, AnimationsPanel AnimPanel){
+    public ControlsPanel(AnimationsPanel AnimPanel){
         this.timer = timer;
         this.AnimPanel=AnimPanel;
 

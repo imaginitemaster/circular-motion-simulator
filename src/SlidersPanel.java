@@ -35,7 +35,7 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
 
         //Give sliders mins and maxes
         massSlider = new JSlider(1,10,1);
-        speedSlider = new JSlider(1,15,5);
+        speedSlider = new JSlider(1,15,10);
         radSlider = new JSlider(5,10,10);
 
         //give sliders sizes
@@ -98,10 +98,10 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
         //if reset is pressed, reset sliders and the model's values.
         if(e.getSource()==resetButton){
             model.setBallMass(1);
-            model.setBallSpeed(5);
+            model.setBallSpeed(10);
             model.setPathRad(10);
             massSlider.setValue(1);
-            speedSlider.setValue(5);
+            speedSlider.setValue(10);
             radSlider.setValue(10);
         }
     }

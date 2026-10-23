@@ -13,7 +13,7 @@ public class Screen extends JFrame {
 
         AnimationsPanel animPanel = new AnimationsPanel(model);
         animPanel.setPreferredSize(new Dimension(600,600));
-        ControlsPanel ctrlPanel = new ControlsPanel(animPanel.getTimer(), animPanel);
+        ControlsPanel ctrlPanel = new ControlsPanel(animPanel);
         ctrlPanel.setPreferredSize(new Dimension(800,40));
         SlidersPanel slidePanel = new SlidersPanel(model);
         slidePanel.setPreferredSize(new Dimension(220,200));
