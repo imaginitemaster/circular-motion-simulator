@@ -42,11 +42,6 @@ public class AnimationsPanel extends JPanel{
     double sin;
     double cos;
 
-    int[] accelArrowX = {0,0,0};
-    int[] accelArrowY = {0,0,0};
-    int[] veloArrowX = {0,0,0};
-    int[] veloArrowY = {0,0,0};
-
     JLabel velLabel = new JLabel();
     JLabel accLabel = new JLabel();
     JLabel forLabel = new JLabel();
@@ -77,8 +72,8 @@ public class AnimationsPanel extends JPanel{
             paint.setStroke(four);
             paint.setColor(Color.MAGENTA);
             //accel should scale off velocity² and radius
-            paint.drawLine((int) (cX+ radLength*cos), (int) (cY - radLength*sin), (int) (cX+ (1.1*radLength-(ballSpeed*ballSpeed)-40)*cos), (int) (cY - (1.1*radLength-(ballSpeed*ballSpeed)-40)*sin));
-            paint.fillPolygon(accelArrowX,accelArrowY,3);
+            //in length, 3 represents the number of pixels per m•s⁻²
+            DrawArrow accel = new DrawArrow(cX+ radLength*cos,cY - radLength*sin,-cos,sin, (double) (3*ballSpeed * ballSpeed) /pathRadius,paint);
         }
 
 
@@ -87,8 +82,8 @@ public class AnimationsPanel extends JPanel{
             paint.setStroke(three);
             paint.setColor(Color.ORANGE);
             //change end point to vary based on velocity
-            paint.drawLine((int) (cX+ radLength*cos), (int) (cY - radLength*sin), (int) (cX+ radLength*cos - 20*ballSpeed*sin), (int) (cY - radLength*sin - 20*ballSpeed*cos));
-            paint.fillPolygon(veloArrowX,veloArrowY,3);
+            //in length, 10 represents number of pixels per m•s⁻¹
+            DrawArrow velo = new DrawArrow(cX+ radLength*cos,cY - radLength*sin,-sin,-cos,10*ballSpeed,paint);
         }
 
         //Draw radial line
@@ -116,7 +111,7 @@ public class AnimationsPanel extends JPanel{
         paint.drawOval(dialX,4,70,70);
         paint.setStroke(three);
         paint.setColor(Color.ORANGE);
-        paint.drawLine((dialX+35),(39), (int) (dialX+35- 25*sin), (int) (39- 25*cos));
+        DrawArrow velDial = new DrawArrow(dialX+35,39,-sin,-cos,25,paint);
         paint.fillOval(dialX+32,36,6,6);
 
         //Acceleration Dial
@@ -125,7 +120,7 @@ public class AnimationsPanel extends JPanel{
         paint.drawOval(dialX+180,4,70,70);
         paint.setStroke(three);
         paint.setColor(Color.MAGENTA);
-        paint.drawLine(dialX+215,39,(int) (dialX+215- 25*cos), (int) (39 + 25*sin));
+        DrawArrow accelDial = new DrawArrow(dialX+215,39,-cos,sin,25,paint);
         paint.fillOval(dialX+212,36,6,6);
 
         //Force Dial
@@ -134,7 +129,7 @@ public class AnimationsPanel extends JPanel{
         paint.drawOval(dialX+360,4,70,70);
         paint.setStroke(three);
         paint.setColor(Color.DARK_GRAY);
-        paint.drawLine(dialX+395,39,(int) (dialX+395- 25*cos), (int) (39 + 25*sin));
+        DrawArrow forceDial = new DrawArrow(dialX+395,39,-cos,sin,25,paint);
         paint.fillOval(dialX+392,36,6,6);
 
         velLabel.setText("Velocity");
@@ -154,7 +149,6 @@ public class AnimationsPanel extends JPanel{
         velVal.setBounds(dialX+75,24,80,30);
         accVal.setBounds(dialX+255,24,80,30);
         forVal.setBounds(dialX+435,24,80,30);
-
     }
 
     //This timer runs code at 60 FPS
@@ -174,7 +168,6 @@ public class AnimationsPanel extends JPanel{
         pathRadius = model.getPathRad();
         radLength = 28*pathRadius;
 
-        updateArrowHeads();
         repaint();
     });
 
@@ -186,35 +179,8 @@ public class AnimationsPanel extends JPanel{
         this.angle = angle;
         sin = Math.sin(angle);
         cos = Math.cos(angle);
-        updateArrowHeads();
     }
 
-    public void updateArrowHeads(){
-
-        double velArrowStartX = cX + radLength*cos;
-        double velArrowStartY = cY - radLength*sin;
-
-        //Arrow head tip
-        accelArrowX[0] = (int) (cX+(1.1*radLength-ballSpeed*ballSpeed-48)*cos);
-        accelArrowY[0] = (int) (cY-(1.1*radLength-ballSpeed*ballSpeed-48)*sin);
-        //change endpoint to vary off of velocity?
-        veloArrowX[0] = (int) (velArrowStartX - (23.0)*ballSpeed*sin);
-        veloArrowY[0] = (int) (velArrowStartY - (23.0)*ballSpeed*cos);
-
-//arrow head left side i think
-        accelArrowX[1] = (int) (cX +(1.1*radLength - ballSpeed*ballSpeed - 35)*cos - (1/28.0)*radLength*sin);
-        accelArrowY[1] = (int) (cY -(1.1*radLength - ballSpeed*ballSpeed - 35)*sin - (1/28.0)*radLength*cos);
-
-        veloArrowX[1] = (int) (velArrowStartX - 18*ballSpeed*sin + ballSpeed*cos);
-        veloArrowY[1] = (int) (velArrowStartY - 18*ballSpeed*cos - ballSpeed*sin);
-
-//arrow head right side
-        accelArrowX[2] = (int) (cX + (1.1*radLength - ballSpeed*ballSpeed - 35)*cos + (1/28.0)*radLength*sin);
-        accelArrowY[2] = (int) (cY - (1.1*radLength - ballSpeed*ballSpeed - 35)*sin + (1/28.0)*radLength*cos);
-
-        veloArrowX[2] = (int) (velArrowStartX - 18*ballSpeed*sin - ballSpeed*cos);
-        veloArrowY[2] = (int) (velArrowStartY - 18*ballSpeed*cos + ballSpeed*sin);
-    }
 
     public void setPause(boolean pause){
         this.pause = pause;
