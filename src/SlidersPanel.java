@@ -35,7 +35,7 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
 
         //Give sliders mins and maxes
         massSlider = new JSlider(1,10,1);
-        speedSlider = new JSlider(1,10,5);
+        speedSlider = new JSlider(5,20,5);
         radSlider = new JSlider(5,10,10);
 
         //give sliders sizes
@@ -60,7 +60,7 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
         massSlider.setPaintTrack(true);
         massSlider.setMajorTickSpacing(9);
         speedSlider.setPaintTrack(true);
-        speedSlider.setMajorTickSpacing(9);
+        speedSlider.setMajorTickSpacing(5);
         radSlider.setPaintTrack(true);
         radSlider.setMajorTickSpacing(5);
 

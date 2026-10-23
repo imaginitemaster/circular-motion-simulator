@@ -164,7 +164,7 @@ public class AnimationsPanel extends JPanel{
             angle=0;
         }
         if(!pause){
-            angle+=(Math.PI/600)*ballSpeed;
+            angle+=(Math.PI/600)*ballSpeed/pathRadius;
         }
         sin = Math.sin(angle);
         cos = Math.cos(angle);
