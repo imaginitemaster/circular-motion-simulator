@@ -180,6 +180,7 @@ public class AnimationsPanel extends JPanel{
         return timer;
     }
 
+    //leftism
 
     public void setAngle(double angle){
         this.angle = angle;
