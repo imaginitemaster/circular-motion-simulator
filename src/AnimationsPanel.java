@@ -39,7 +39,6 @@ public class AnimationsPanel extends JPanel{
     private int cX = 600;
     private int cY = 400;
     private int cDiam = 20;
-    private double angle = 0;
     boolean drawAccel = true;
     boolean drawVelo = true;
 
@@ -59,12 +58,11 @@ public class AnimationsPanel extends JPanel{
     BasicStroke four = new BasicStroke(4f);
     BasicStroke three = new BasicStroke(3f);
 
-    boolean pause = true;
-
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D paint = (Graphics2D) g;
+        radLength = 28*pathRadius;
         sin = model.getSin();
         cos = model.getCos();
 

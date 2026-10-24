@@ -36,7 +36,7 @@ public class SimulationModel {
     }
 
 
-    boolean pause = false;
+    boolean pause = true;
     //Pause angle being increased
     public void setPause(boolean pause){
         this.pause = pause;
