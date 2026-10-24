@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 public class ControlsPanel extends JPanel implements ActionListener {
 
-    private AnimationsPanel AnimPanel;
-    private Timer timer;
+    private AnimationsPanel animPanel;
+    private SimulationModel model;
 
     JButton buttonStart;
     JButton buttonStop;
@@ -14,8 +14,9 @@ public class ControlsPanel extends JPanel implements ActionListener {
 
     Dimension buttonSize = new Dimension(30,30);
 
-    public ControlsPanel(AnimationsPanel AnimPanel){
-        this.AnimPanel=AnimPanel;
+    public ControlsPanel(AnimationsPanel AnimPanel, SimulationModel SimModel){
+        this.animPanel =AnimPanel;
+        this.model = SimModel;
 
         ImageIcon startIcon = new ImageIcon(Main.class.getResource("start.png"));
         ImageIcon stopIcon = new ImageIcon(Main.class.getResource("stop.png"));
@@ -49,16 +50,16 @@ public class ControlsPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()== buttonStart){
             //if started, start animation (angle gets increased by timer)
-            AnimPanel.setPause(false);
+            model.setPause(false);
         }
         if(e.getSource()== buttonStop){
             //if stopped, the timer stops adding to angle
-            AnimPanel.setPause(true);
+            model.setPause(true);
         }
         if(e.getSource() == buttonRestart){
             //if restarted, set the angle to 0 and repaint to show it.
-            AnimPanel.setAngle(0);
-            AnimPanel.repaint();
+            model.setAngle(0);
+            animPanel.repaint();
         }
     }
 }

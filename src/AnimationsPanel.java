@@ -17,7 +17,7 @@ public class AnimationsPanel extends JPanel{
         this.model = model;
 
         timer.start();
-        this.setAngle(0);
+        model.setAngle(0);
         this.repaint();
 
         ballMass = model.getBallMass();
@@ -65,6 +65,8 @@ public class AnimationsPanel extends JPanel{
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D paint = (Graphics2D) g;
+        sin = model.getSin();
+        cos = model.getCos();
 
         //Draw Big circle showing ball's path
         paint.setStroke(one);
@@ -158,37 +160,10 @@ public class AnimationsPanel extends JPanel{
     //This timer runs code at 59 FPS (17ms)
     //you can't get an exact 60FPS here
     Timer timer = new Timer(17,e->{
-        //Set angle back to 0
-        if(angle>=2*Math.PI){
-            angle-=2*Math.PI;
-        }
-        if(!pause){
-            angle+=(0.017)*ballSpeed/pathRadius;
-        }
-        sin = Math.sin(angle);
-        cos = Math.cos(angle);
-
         ballMass = model.getBallMass();
         ballSpeed = model.getBallSpeed();
         pathRadius = model.getPathRad();
-        radLength = 28*pathRadius;
-
+        model.update();
         repaint();
     });
-
-    public Timer getTimer(){
-        return timer;
-    }
-
-    //leftism
-
-    public void setAngle(double angle){
-        this.angle = angle;
-        sin = Math.sin(angle);
-        cos = Math.cos(angle);
-    }
-
-    public void setPause(boolean pause){
-        this.pause = pause;
-    }
 }
