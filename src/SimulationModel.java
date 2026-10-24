@@ -23,6 +23,14 @@ public class SimulationModel {
     int radLength = 28*pathRad;
     int[] ballPos = new int[2];
     int ballWidth = 15+ballMass;
+    double accelNumValue;
+    double forceNumValue;
+
+    boolean drawAccel =true;
+    boolean drawAccelDial = true;
+    boolean drawForceDial = true;
+
+    boolean circularPath = true;
 
     //This update method will be called by the timer in order to update values
     public void update(){
@@ -41,8 +49,26 @@ public class SimulationModel {
         radLength = 28*pathRad;
 
         ballWidth = 15+ballMass;
-        ballPos = new int[]{(int)(cX + radLength * cos), (int) (cY - radLength * sin)};
+        if (circularPath) {
+            ballPos = new int[]{(int)(cX + radLength * cos), (int) (cY - radLength * sin)};
+            accelNumValue = (double)(ballSpeed*ballSpeed)/(double)(pathRad);
+            forceNumValue = ((double)ballMass*(double)(ballSpeed*ballSpeed)/(double)pathRad);
+            drawAccel =true;
+            drawAccelDial = true;
+            drawForceDial = true;
+        }else{
+            ballPos[0]-= (int) (sin*ballSpeed);
+            ballPos[1]-= (int) (cos*ballSpeed);
 
+            accelNumValue = 0;
+            forceNumValue = 0;
+
+            drawAccel =false;
+            drawAccelDial = false;
+            drawForceDial = false;
+
+            this.setPause(true);
+        }
     }
 
 
@@ -65,4 +91,10 @@ public class SimulationModel {
         return cos;
     }
     public int[] getBallPos(){return ballPos;}
+    public double getAccelNumValue(){return accelNumValue;}
+    public double getForceNumValue() {return forceNumValue;}
+
+    public boolean getDrawAccel(){return drawAccel;}
+    public boolean getDrawAccelDial(){return drawAccelDial;}
+    public boolean getDrawForceDial(){return drawForceDial;}
 }

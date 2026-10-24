@@ -39,7 +39,6 @@ public class AnimationsPanel extends JPanel{
     private int cX = 600;
     private int cY = 400;
     private int cDiam = 20;
-    boolean drawAccel = true;
     boolean drawVelo = true;
 
     double sin;
@@ -74,7 +73,7 @@ public class AnimationsPanel extends JPanel{
         paint.drawOval(cX-radLength,cY-radLength,radLength*2,radLength*2);
 
         //Acceleration Arrow
-        if(drawAccel){
+        if(model.getDrawAccel()){
             paint.setStroke(four);
             paint.setColor(Color.MAGENTA);
             //accel should scale off velocity² and radius
@@ -126,7 +125,7 @@ public class AnimationsPanel extends JPanel{
         paint.drawOval(dialX+180,4,70,70);
         paint.setStroke(three);
         paint.setColor(Color.MAGENTA);
-        DrawArrow accelDial = new DrawArrow(dialX+215,39,-cos,sin,25,paint);
+        if(model.getDrawAccelDial()){DrawArrow accelDial = new DrawArrow(dialX+215,39,-cos,sin,25,paint);}
         paint.fillOval(dialX+212,36,6,6);
 
         //Force Dial
@@ -135,7 +134,7 @@ public class AnimationsPanel extends JPanel{
         paint.drawOval(dialX+360,4,70,70);
         paint.setStroke(three);
         paint.setColor(Color.DARK_GRAY);
-        DrawArrow forceDial = new DrawArrow(dialX+395,39,-cos,sin,25,paint);
+        if(model.getDrawForceDial()){DrawArrow forceDial = new DrawArrow(dialX+395,39,-cos,sin,25,paint);}
         paint.fillOval(dialX+392,36,6,6);
 
         velLabel.setText("Velocity");
@@ -149,8 +148,8 @@ public class AnimationsPanel extends JPanel{
         //m•s⁻¹
         //m•s⁻²
         velVal.setText(String.format("%.2f",(double)ballSpeed)+" m•s⁻¹");
-        accVal.setText(String.format("%.2f",(double)(ballSpeed*ballSpeed)/(double)(pathRadius))+" m•s⁻²");
-        forVal.setText(String.format("%.2f",((double)ballMass*(double)(ballSpeed*ballSpeed)/(double)pathRadius))+ " N");
+        accVal.setText(String.format("%.2f",model.getAccelNumValue())+" m•s⁻²");
+        forVal.setText(String.format("%.2f",model.getForceNumValue())+ " N");
 
         velVal.setBounds(dialX+75,24,80,30);
         accVal.setBounds(dialX+255,24,80,30);
