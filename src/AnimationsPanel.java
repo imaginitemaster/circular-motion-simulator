@@ -7,6 +7,11 @@ public class AnimationsPanel extends JPanel{
     //Makes an instance of the model to pull variables from
     SimulationModel model;
 
+    //ball's mass, speed and path radius
+    int ballMass;
+    int ballSpeed;
+    int pathRadius;
+
     public AnimationsPanel(SimulationModel model){
 
         this.model = model;
@@ -14,6 +19,10 @@ public class AnimationsPanel extends JPanel{
         timer.start();
         this.setAngle(0);
         this.repaint();
+
+        ballMass = model.getBallMass();
+        ballSpeed = model.getBallSpeed();
+        pathRadius = model.getPathRad();
 
         this.add(velLabel);
         this.add(accLabel);
@@ -24,11 +33,6 @@ public class AnimationsPanel extends JPanel{
     }
 
     //In this code, any variable starting with "c" refers to centre
-
-    //ball's mass, speed and path radius
-    int ballMass;
-    int ballSpeed;
-    int pathRadius;
 
     //radlength max = 280
     private int radLength = 28*pathRadius;
@@ -102,7 +106,6 @@ public class AnimationsPanel extends JPanel{
         paint.setColor(Color.GRAY);
         paint.fillOval((int) (cX+ radLength*cos-0.5*ballWidth), (int) (cY - radLength*sin-0.5*ballWidth), ballWidth,ballWidth);
 
-        //I want to update dialX to be 385
         int dialX = 385;
 
         //Velocity dial
@@ -151,7 +154,8 @@ public class AnimationsPanel extends JPanel{
         forVal.setBounds(dialX+435,24,80,30);
     }
 
-    //This timer runs code at 60 FPS
+    //This timer runs code at 59 FPS (17ms)
+    //you can't get an exact 60FPS here
     Timer timer = new Timer(17,e->{
         //Set angle back to 0
         if(angle>=2*Math.PI){

@@ -4,9 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControlsPanel extends JPanel implements ActionListener {
-    private boolean start = false;
-    private boolean stop = false;
-    private boolean restart = false;
 
     private AnimationsPanel AnimPanel;
     private Timer timer;
@@ -18,7 +15,6 @@ public class ControlsPanel extends JPanel implements ActionListener {
     Dimension buttonSize = new Dimension(30,30);
 
     public ControlsPanel(AnimationsPanel AnimPanel){
-        this.timer = timer;
         this.AnimPanel=AnimPanel;
 
         ImageIcon startIcon = new ImageIcon(Main.class.getResource("start.png"));
