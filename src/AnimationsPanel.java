@@ -45,6 +45,8 @@ public class AnimationsPanel extends JPanel{
     double sin;
     double cos;
 
+    int[] ballPos = new int[2];
+
     JLabel velLabel = new JLabel();
     JLabel accLabel = new JLabel();
     JLabel forLabel = new JLabel();
@@ -87,7 +89,7 @@ public class AnimationsPanel extends JPanel{
             paint.setColor(Color.ORANGE);
             //change end point to vary based on velocity
             //in length, 10 represents number of pixels per m•s⁻¹
-            DrawArrow velo = new DrawArrow(cX+ radLength*cos,cY - radLength*sin,-sin,-cos,10*ballSpeed,paint);
+            DrawArrow velo = new DrawArrow(model.getBallPos()[0],model.getBallPos()[1],-sin,-cos,10*ballSpeed,paint);
         }
 
         //Draw radial line
@@ -104,7 +106,7 @@ public class AnimationsPanel extends JPanel{
         //Draw Ball
         paint.setStroke(two);
         paint.setColor(Color.GRAY);
-        paint.fillOval((int) (cX+ radLength*cos-0.5*ballWidth), (int) (cY - radLength*sin-0.5*ballWidth), ballWidth,ballWidth);
+        paint.fillOval((int) (model.getBallPos()[0]- 0.5 * ballWidth), (int) (model.getBallPos()[1]- 0.5 * ballWidth), ballWidth,ballWidth);
 
         //dialX is the x position of the first dial
         int dialX = 385;

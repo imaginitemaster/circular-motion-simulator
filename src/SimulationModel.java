@@ -14,10 +14,15 @@ public class SimulationModel {
     public int getBallSpeed(){return ballSpeed;}
     public int getPathRad(){return pathRad;}
 
+    private int cX = 600;
+    private int cY = 400;
 
     private double angle = 0;
     double sin;
     double cos;
+    int radLength = 28*pathRad;
+    int[] ballPos = new int[2];
+    int ballWidth = 15+ballMass;
 
     //This update method will be called by the timer in order to update values
     public void update(){
@@ -32,6 +37,11 @@ public class SimulationModel {
 
         sin = Math.sin(angle);
         cos = Math.cos(angle);
+
+        radLength = 28*pathRad;
+
+        ballWidth = 15+ballMass;
+        ballPos = new int[]{(int)(cX + radLength * cos), (int) (cY - radLength * sin)};
 
     }
 
@@ -54,4 +64,5 @@ public class SimulationModel {
     public double getCos() {
         return cos;
     }
+    public int[] getBallPos(){return ballPos;}
 }
