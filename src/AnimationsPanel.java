@@ -106,6 +106,7 @@ public class AnimationsPanel extends JPanel{
         paint.setColor(Color.GRAY);
         paint.fillOval((int) (cX+ radLength*cos-0.5*ballWidth), (int) (cY - radLength*sin-0.5*ballWidth), ballWidth,ballWidth);
 
+        //dialX is the x position of the first dial
         int dialX = 385;
 
         //Velocity dial
