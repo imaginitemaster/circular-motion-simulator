@@ -137,6 +137,7 @@ public class AnimationsPanel extends JPanel{
         if(model.getDrawForceDial()){DrawArrow forceDial = new DrawArrow(dialX+395,39,-cos,sin,25,paint);}
         paint.fillOval(dialX+392,36,6,6);
 
+
         velLabel.setText("Velocity");
         accLabel.setText("Acceleration");
         forLabel.setText("Centripetal Force");
