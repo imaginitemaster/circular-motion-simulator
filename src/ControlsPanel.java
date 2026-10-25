@@ -7,6 +7,7 @@ public class ControlsPanel extends JPanel implements ActionListener {
 
     private AnimationsPanel animPanel;
     private SimulationModel model;
+    private Information info;
 
     JButton buttonStart;
     JButton buttonStop;
@@ -21,6 +22,9 @@ public class ControlsPanel extends JPanel implements ActionListener {
         ImageIcon startIcon = new ImageIcon(Main.class.getResource("start.png"));
         ImageIcon stopIcon = new ImageIcon(Main.class.getResource("stop.png"));
         ImageIcon restartIcon = new ImageIcon(Main.class.getResource("restart.png"));
+
+        //Information
+        info = new Information("I explain stuff","a","Chicken");
 
         //start button
         buttonStart = new JButton();
@@ -44,6 +48,7 @@ public class ControlsPanel extends JPanel implements ActionListener {
         this.add(buttonStart);
         this.add(buttonStop);
         this.add(buttonRestart);
+        this.add(info);
     }
 
     @Override
