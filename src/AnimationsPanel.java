@@ -6,6 +6,7 @@ public class AnimationsPanel extends JPanel{
 
     //Makes an instance of the model to pull variables from
     SimulationModel model;
+    DisplayFormulae formulae;
 
     //ball's mass, speed and path radius
     int ballMass;
@@ -14,9 +15,10 @@ public class AnimationsPanel extends JPanel{
 
     Information dialInfo;
 
-    public AnimationsPanel(SimulationModel model){
+    public AnimationsPanel(SimulationModel model, DisplayFormulae formulae){
         this.setLayout(null);
         this.model = model;
+        this.formulae = formulae;
 
         timer.start();
         model.setAngle(0);
@@ -27,7 +29,7 @@ public class AnimationsPanel extends JPanel{
         pathRadius = model.getPathRad();
 
         dialInfo = new Information("Dial Info","Dials: The dials here display the magnitude of different values present in the simulation as well as the direction those values point","Dials");
-        dialInfo.setBounds(865,29,20,20);
+        dialInfo.setBounds(870,29,20,20);
 
         this.add(dialInfo);
         this.add(velLabel);
@@ -170,6 +172,7 @@ public class AnimationsPanel extends JPanel{
         ballSpeed = model.getBallSpeed();
         pathRadius = model.getPathRad();
         model.update();
+        formulae.update();
         repaint();
     });
 }

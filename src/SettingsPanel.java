@@ -25,7 +25,6 @@ public class SettingsPanel extends JPanel implements ChangeListener, ActionListe
     Information settingsInfo;
 
     public SettingsPanel(SimulationModel model){
-
         this.model = model;
 
         ImageIcon resetIcon = new ImageIcon(Main.class.getResource("restart.png"));
@@ -102,9 +101,15 @@ public class SettingsPanel extends JPanel implements ChangeListener, ActionListe
     @Override
     public void stateChanged(ChangeEvent e) {
         //if mass, speed or radius are changed, change the values in model
-        if(e.getSource()==massSlider){model.setBallMass(massSlider.getValue());}
-        if(e.getSource()==speedSlider){model.setBallSpeed(speedSlider.getValue());}
-        if(e.getSource()==radSlider){model.setPathRad(radSlider.getValue());}
+        if(e.getSource()==massSlider){
+            model.setBallMass(massSlider.getValue());
+        }
+        if(e.getSource()==speedSlider){
+            model.setBallSpeed(speedSlider.getValue());
+        }
+        if(e.getSource()==radSlider){
+            model.setPathRad(radSlider.getValue());
+        }
     }
 
     @Override
