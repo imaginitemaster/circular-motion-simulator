@@ -9,7 +9,7 @@ public class Screen extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         JPanel infoPanel = new JPanel();
-        Information info = new Information("Project Info","This project models Circular Motion in a way that should be useful for a student\nIt allows students to adjust different values related to circular motion in order to get a better understanding of how it works.\n\nThere are info icons like this one throughout that can provide extra information on how each object works.","Project");
+        Information info = new Information("Project Info","This project models Circular Motion in a way that should be useful for a student\nIt allows students to adjust different values related to circular motion in order to get a better understanding of how it works.\n\nThere are info icons like this one throughout that can provide extra information on how each object works.\n\nNOTE: This simulation assumes Uniform Circular Motion (the ball moves in a circular path at constant velocity)\n            The simulation's model is of the HORIZONTAL PLANE","Project");
         SimulationModel model = new SimulationModel();
 
         AnimationsPanel animPanel = new AnimationsPanel(model);
