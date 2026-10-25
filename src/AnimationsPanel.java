@@ -9,9 +9,9 @@ public class AnimationsPanel extends JPanel{
     DisplayFormulae formulae;
 
     //ball's mass, speed and path radius
-    int ballMass;
-    int ballSpeed;
-    int pathRadius;
+    double ballMass;
+    double ballSpeed;
+    double pathRadius;
 
     Information dialInfo;
 
@@ -43,7 +43,7 @@ public class AnimationsPanel extends JPanel{
     //In this code, any variable starting with "c" refers to centre
 
     //radlength max = 280
-    private int radLength = 28*pathRadius;
+    private int radLength = (int)(28*pathRadius);
     private int cX = 600;
     private int cY = 400;
     private int cDiam = 20;
@@ -71,7 +71,7 @@ public class AnimationsPanel extends JPanel{
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D paint = (Graphics2D) g;
-        radLength = 28*pathRadius;
+        radLength = 28*(int)pathRadius;
         sin = model.getSin();
         cos = model.getCos();
 
@@ -109,7 +109,7 @@ public class AnimationsPanel extends JPanel{
         paint.setColor(Color.BLUE);
         paint.fillOval(cX-cDiam/2,cY-cDiam/2,cDiam,cDiam);
 
-        int ballWidth = 15+ballMass;
+        int ballWidth = (int)(15+ballMass);
         //Draw Ball
         paint.setStroke(two);
         paint.setColor(Color.GRAY);

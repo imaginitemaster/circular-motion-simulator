@@ -13,13 +13,13 @@ public class Screen extends JFrame {
         SimulationModel model = new SimulationModel();
 
         DisplayFormulae formulae = new DisplayFormulae(model);
-        formulae.setPreferredSize(new Dimension(220,500));
+        formulae.setPreferredSize(new Dimension(245,500));
         AnimationsPanel animPanel = new AnimationsPanel(model,formulae);
         animPanel.setPreferredSize(new Dimension(600,600));
         ControlsPanel ctrlPanel = new ControlsPanel(animPanel,model);
         ctrlPanel.setPreferredSize(new Dimension(800,40));
         SettingsPanel settPanel = new SettingsPanel(model);
-        settPanel.setPreferredSize(new Dimension(220,800));
+        settPanel.setPreferredSize(new Dimension(245,800));
 
 
         infoPanel.add(info,BorderLayout.NORTH);

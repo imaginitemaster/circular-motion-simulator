@@ -1,18 +1,18 @@
 public class SimulationModel {
-    int ballMass = 1;
-    int ballSpeed = 10;
-    int pathRad = 10;
+    double ballMass = 1;
+    double ballSpeed = 10;
+    double pathRad = 10;
     public SimulationModel(){
 
     }
 
     public void setBallMass(int ballMass){this.ballMass = ballMass;}
     public  void setBallSpeed(int ballSpeed){this.ballSpeed = ballSpeed;}
-    public void setPathRad(int pathRad){this.pathRad = pathRad;}
+    public void setPathRad(double pathRad){this.pathRad = pathRad;}
 
-    public int getBallMass(){return ballMass;}
-    public int getBallSpeed(){return ballSpeed;}
-    public int getPathRad(){return pathRad;}
+    public double getBallMass(){return ballMass;}
+    public double getBallSpeed(){return ballSpeed;}
+    public double getPathRad(){return pathRad;}
 
     private int cX = 600;
     private int cY = 400;
@@ -20,11 +20,13 @@ public class SimulationModel {
     private double angle = 0;
     double sin;
     double cos;
-    int radLength = 28*pathRad;
+    int radLength = (int)(28*pathRad);
     double[] ballPos = new double[2];
-    int ballWidth = 15+ballMass;
+    int ballWidth = (int)(15+ballMass);
     double accelNumValue;
     double forceNumValue;
+    String angVelVal;
+    String timePVal;
 
     boolean drawAccel =true;
     boolean drawAccelDial = true;
@@ -46,13 +48,15 @@ public class SimulationModel {
         sin = Math.sin(angle);
         cos = Math.cos(angle);
 
-        radLength = 28*pathRad;
+        radLength = (int)(28*pathRad);
 
-        ballWidth = 15+ballMass;
+        ballWidth = (int)(15+ballMass);
         if (circularPath) {
             ballPos = new double[]{(cX + radLength * cos), (cY - radLength * sin)};
-            accelNumValue = (double)(ballSpeed*ballSpeed)/(double)(pathRad);
-            forceNumValue = ((double)ballMass*(double)(ballSpeed*ballSpeed)/(double)pathRad);
+            accelNumValue = (ballSpeed*ballSpeed)/(pathRad);
+            forceNumValue = (ballMass*(ballSpeed*ballSpeed)/pathRad);
+            angVelVal = String.format("%.2f",(ballSpeed/pathRad));
+            timePVal = String.format("%.2f",2*Math.PI*pathRad/ballSpeed);
             drawAccel =true;
             drawAccelDial = true;
             drawForceDial = true;
@@ -64,6 +68,8 @@ public class SimulationModel {
 
             accelNumValue = 0;
             forceNumValue = 0;
+            angVelVal = "N/A";
+            timePVal = "N/A";
 
             drawAccel =false;
             drawAccelDial = false;
@@ -99,6 +105,8 @@ public class SimulationModel {
     public void resetBallPos() {this.ballPos = new double[]{(cX + radLength * cos),(cY - radLength * sin)};}
     public double getAccelNumValue(){return accelNumValue;}
     public double getForceNumValue() {return forceNumValue;}
+    public String getAngVelVal(){return angVelVal;}
+    public String getTimePVal(){return timePVal;}
 
     public boolean getDrawAccel(){return drawAccel;}
     public void setDrawAccel(boolean drawAccel){this.drawAccel=drawAccel;}
