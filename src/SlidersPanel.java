@@ -115,6 +115,7 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
                 radSlider.setValue(10);
             }else{
                 model.setCircularPath(true);
+                model.setDrawAccel(true);
             }
         }
         if(e.getSource()==releaseBall){

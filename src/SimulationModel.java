@@ -21,7 +21,7 @@ public class SimulationModel {
     double sin;
     double cos;
     int radLength = 28*pathRad;
-    int[] ballPos = new int[2];
+    double[] ballPos = new double[2];
     int ballWidth = 15+ballMass;
     double accelNumValue;
     double forceNumValue;
@@ -50,7 +50,7 @@ public class SimulationModel {
 
         ballWidth = 15+ballMass;
         if (circularPath) {
-            ballPos = new int[]{(int)(cX + radLength * cos), (int) (cY - radLength * sin)};
+            ballPos = new double[]{(cX + radLength * cos), (cY - radLength * sin)};
             accelNumValue = (double)(ballSpeed*ballSpeed)/(double)(pathRad);
             forceNumValue = ((double)ballMass*(double)(ballSpeed*ballSpeed)/(double)pathRad);
             drawAccel =true;
@@ -58,8 +58,8 @@ public class SimulationModel {
             drawForceDial = true;
         }else{
             if(!pauseLinear){
-                ballPos[0]-= (int) (sin*ballSpeed);
-                ballPos[1]-= (int) (cos*ballSpeed);
+                ballPos[0]-= (sin*ballSpeed);
+                ballPos[1]-= (cos*ballSpeed);
             }
 
             accelNumValue = 0;
@@ -95,12 +95,13 @@ public class SimulationModel {
     public double getCos() {
         return cos;
     }
-    public int[] getBallPos(){return ballPos;}
-    public void resetBallPos() {this.ballPos = new int[]{(int)(cX + radLength * cos), (int) (cY - radLength * sin)};}
+    public double[] getBallPos(){return ballPos;}
+    public void resetBallPos() {this.ballPos = new double[]{(cX + radLength * cos),(cY - radLength * sin)};}
     public double getAccelNumValue(){return accelNumValue;}
     public double getForceNumValue() {return forceNumValue;}
 
     public boolean getDrawAccel(){return drawAccel;}
+    public void setDrawAccel(boolean drawAccel){this.drawAccel=drawAccel;}
     public boolean getDrawAccelDial(){return drawAccelDial;}
     public boolean getDrawForceDial(){return drawForceDial;}
 
