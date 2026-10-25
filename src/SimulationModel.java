@@ -97,4 +97,6 @@ public class SimulationModel {
     public boolean getDrawAccel(){return drawAccel;}
     public boolean getDrawAccelDial(){return drawAccelDial;}
     public boolean getDrawForceDial(){return drawForceDial;}
+
+    public void setCircularPath(boolean circularPath){this.circularPath=circularPath;}
 }

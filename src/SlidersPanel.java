@@ -11,6 +11,7 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
     JSlider radSlider;
 
     JButton resetButton;
+    JButton releaseBall;
 
     JLabel massLabel;
     JLabel speedLabel;
@@ -26,12 +27,19 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
         this.model = model;
 
         ImageIcon resetIcon = new ImageIcon(Main.class.getResource("restart.png"));
+        ImageIcon releaseIcon = new ImageIcon(Main.class.getResource("release.png"));
 
         //create resetButton
         resetButton = new JButton();
         resetButton.setPreferredSize(buttonSize);
         resetButton.addActionListener(this);
         resetButton.setIcon(resetIcon);
+
+        //create releaseBall button
+        releaseBall = new JButton();
+        releaseBall.setPreferredSize(buttonSize);
+        releaseBall.addActionListener(this);
+        releaseBall.setIcon(releaseIcon);
 
         //Give sliders mins and maxes
         massSlider = new JSlider(1,10,1);
@@ -82,6 +90,7 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
         this.add(speedSlider);
         this.add(radLabel);
         this.add(radSlider);
+        this.add(releaseBall);
         this.add(resetButton);
     }
 
@@ -103,6 +112,10 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
             massSlider.setValue(1);
             speedSlider.setValue(10);
             radSlider.setValue(10);
+            model.setCircularPath(true);
+        }
+        if(e.getSource()==releaseBall){
+            model.setCircularPath(false);
         }
     }
 }
