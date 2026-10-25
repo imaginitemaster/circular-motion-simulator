@@ -49,17 +49,29 @@ public class ControlsPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()== buttonStart){
-            //if started, start animation (angle gets increased by timer)
-            model.setPause(false);
+            if(model.getCircularPath()){
+                //if started, start animation (angle gets increased by timer)
+                model.setPauseCircular(false);
+            }else{
+                model.setPauseLinear(false);
+            }
         }
         if(e.getSource()== buttonStop){
-            //if stopped, the timer stops adding to angle
-            model.setPause(true);
+            if(model.getCircularPath()){
+                //if stopped, the timer stops adding to angle
+                model.setPauseCircular(true);
+            }else{
+                model.setPauseLinear(true);
+            }
         }
         if(e.getSource() == buttonRestart){
-            //if restarted, set the angle to 0 and repaint to show it.
-            model.setAngle(0);
-            animPanel.repaint();
+            if(model.getCircularPath()){
+                //if restarted, set the angle to 0 and repaint to show it.
+                model.setAngle(0);
+                animPanel.repaint();
+            }else{
+                model.resetBallPos();
+            }
         }
     }
 }

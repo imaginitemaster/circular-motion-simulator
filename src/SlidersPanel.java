@@ -106,16 +106,20 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
     public void actionPerformed(ActionEvent e) {
         //if reset is pressed, reset sliders and the model's values.
         if(e.getSource()==resetButton){
-            model.setBallMass(1);
-            model.setBallSpeed(10);
-            model.setPathRad(10);
-            massSlider.setValue(1);
-            speedSlider.setValue(10);
-            radSlider.setValue(10);
-            model.setCircularPath(true);
+            if(model.getCircularPath()){
+                model.setBallMass(1);
+                model.setBallSpeed(10);
+                model.setPathRad(10);
+                massSlider.setValue(1);
+                speedSlider.setValue(10);
+                radSlider.setValue(10);
+            }else{
+                model.setCircularPath(true);
+            }
         }
         if(e.getSource()==releaseBall){
             model.setCircularPath(false);
+            model.setPauseLinear(false);
         }
     }
 }

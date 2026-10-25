@@ -39,7 +39,7 @@ public class SimulationModel {
         if(angle>=2*Math.PI){
             angle-=2*Math.PI;
         }
-        if(!pause){
+        if(!pauseCircular){
             angle+=(0.017)*ballSpeed/pathRad;
         }
 
@@ -57,8 +57,10 @@ public class SimulationModel {
             drawAccelDial = true;
             drawForceDial = true;
         }else{
-            ballPos[0]-= (int) (sin*ballSpeed);
-            ballPos[1]-= (int) (cos*ballSpeed);
+            if(!pauseLinear){
+                ballPos[0]-= (int) (sin*ballSpeed);
+                ballPos[1]-= (int) (cos*ballSpeed);
+            }
 
             accelNumValue = 0;
             forceNumValue = 0;
@@ -67,16 +69,19 @@ public class SimulationModel {
             drawAccelDial = false;
             drawForceDial = false;
 
-            this.setPause(true);
+            this.setPauseCircular(true);
         }
     }
 
 
-    boolean pause = true;
+    boolean pauseCircular = true;
     //Pause angle being increased
-    public void setPause(boolean pause){
-        this.pause = pause;
+    public void setPauseCircular(boolean pauseCircular){
+        this.pauseCircular = pauseCircular;
     }
+
+    boolean pauseLinear = true;
+    public void setPauseLinear(boolean pauseLinear){this.pauseLinear = pauseLinear;}
 
     public void setAngle(double angle){
         this.angle = angle;
@@ -91,6 +96,7 @@ public class SimulationModel {
         return cos;
     }
     public int[] getBallPos(){return ballPos;}
+    public void resetBallPos() {this.ballPos = new int[]{(int)(cX + radLength * cos), (int) (cY - radLength * sin)};}
     public double getAccelNumValue(){return accelNumValue;}
     public double getForceNumValue() {return forceNumValue;}
 
@@ -99,4 +105,5 @@ public class SimulationModel {
     public boolean getDrawForceDial(){return drawForceDial;}
 
     public void setCircularPath(boolean circularPath){this.circularPath=circularPath;}
+    public boolean getCircularPath(){return circularPath;}
 }
