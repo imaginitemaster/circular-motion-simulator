@@ -104,9 +104,9 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //if reset is pressed, reset sliders and the model's values.
         if(e.getSource()==resetButton){
             if(model.getCircularPath()){
+                //if reset is pressed, reset sliders and the model's values.
                 model.setBallMass(1);
                 model.setBallSpeed(10);
                 model.setPathRad(10);
@@ -116,11 +116,19 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
             }else{
                 model.setCircularPath(true);
                 model.setDrawAccel(true);
+                massSlider.setEnabled(true);
+                speedSlider.setEnabled(true);
+                radSlider.setEnabled(true);
+                releaseBall.setEnabled(true);
             }
         }
         if(e.getSource()==releaseBall){
             model.setCircularPath(false);
             model.setPauseLinear(false);
+            massSlider.setEnabled(false);
+            speedSlider.setEnabled(false);
+            radSlider.setEnabled(false);
+            releaseBall.setEnabled(false);
         }
     }
 }
