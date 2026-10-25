@@ -12,8 +12,10 @@ public class AnimationsPanel extends JPanel{
     int ballSpeed;
     int pathRadius;
 
-    public AnimationsPanel(SimulationModel model){
+    Information dialInfo;
 
+    public AnimationsPanel(SimulationModel model){
+        this.setLayout(null);
         this.model = model;
 
         timer.start();
@@ -24,6 +26,10 @@ public class AnimationsPanel extends JPanel{
         ballSpeed = model.getBallSpeed();
         pathRadius = model.getPathRad();
 
+        dialInfo = new Information("Dial Info","Dials: The dials here display the magnitude of different values present in the simulation as well as the direction those values point","Dials");
+        dialInfo.setBounds(865,29,20,20);
+
+        this.add(dialInfo);
         this.add(velLabel);
         this.add(accLabel);
         this.add(forLabel);

@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SlidersPanel extends JPanel implements ChangeListener, ActionListener {
+public class SettingsPanel extends JPanel implements ChangeListener, ActionListener {
     JSlider massSlider;
     JSlider speedSlider;
     JSlider radSlider;
@@ -22,12 +22,16 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
 
     SimulationModel model;
 
-    public SlidersPanel(SimulationModel model){
+    Information settingsInfo;
+
+    public SettingsPanel(SimulationModel model){
 
         this.model = model;
 
         ImageIcon resetIcon = new ImageIcon(Main.class.getResource("restart.png"));
         ImageIcon releaseIcon = new ImageIcon(Main.class.getResource("release.png"));
+
+        settingsInfo = new Information("Settings Info","Sliders: The sliders change the values related to the ball. They change its mass, speed and the radius of its path.\nRelease Button: The release button releases the ball from the circular motion, allowing it to move in the same way it would after being released in real life   \nReset Button: The reset button resets the values of the sliders to how they started.\n\nBall Release: - After releasing the ball, pressing the reset button will return the ball to circular motion instead of resetting values\n                      - After releasing the ball, the release button and sliders will be locked until after returning to circular motion","Settings");
 
         //create resetButton
         resetButton = new JButton();
@@ -92,6 +96,7 @@ public class SlidersPanel extends JPanel implements ChangeListener, ActionListen
         this.add(radSlider);
         this.add(releaseBall);
         this.add(resetButton);
+        this.add(settingsInfo);
     }
 
     @Override
