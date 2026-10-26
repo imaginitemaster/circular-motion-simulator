@@ -15,9 +15,9 @@ public class ControlsPanel extends JPanel implements ActionListener {
 
     Dimension buttonSize = new Dimension(30,30);
 
-    public ControlsPanel(AnimationsPanel AnimPanel, SimulationModel SimModel){
-        this.animPanel =AnimPanel;
-        this.model = SimModel;
+    public ControlsPanel(AnimationsPanel animPanel, SimulationModel simModel){
+        this.animPanel = animPanel;
+        this.model = simModel;
 
         ImageIcon startIcon = new ImageIcon(Main.class.getResource("start.png"));
         ImageIcon stopIcon = new ImageIcon(Main.class.getResource("stop.png"));

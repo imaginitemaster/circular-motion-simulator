@@ -62,8 +62,10 @@ public class SimulationModel {
             drawForceDial = true;
         }else{
             if(!pauseLinear){
-                ballPos[0]-= (sin*ballSpeed);
-                ballPos[1]-= (cos*ballSpeed);
+                //refreshes every 0.017 seconds, so multiply by 0.017 to get correct distance travelled at that time. eg 10m/s * 0.017s = 0.17m
+                //then, multiply by 28 to get metres in pixels
+                ballPos[0]-= (sin*ballSpeed)*0.017*28;
+                ballPos[1]-= (cos*ballSpeed)*0.017*28;
             }
 
             accelNumValue = 0;
