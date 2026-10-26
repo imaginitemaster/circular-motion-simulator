@@ -24,7 +24,7 @@ public class ControlsPanel extends JPanel implements ActionListener {
         ImageIcon restartIcon = new ImageIcon(Main.class.getResource("restart.png"));
 
         //Information
-        controlsInfo = new Information("Controls Info","Start: Pressing the start button will begin the animation \nPause: Pressing the pause button will pause the animation\nRestart: Pressing the restart button will pull the ball back to where it started \n\nBall Release: After releasing the ball, the start, pause and restart buttons will perform the exact same jobs, but for linear motion instead of circular motion","Controls");
+        controlsInfo = new Information("Controls Info","Start:\nPressing the start button will begin the animation \nPause:\nPressing the pause button will pause the animation\nRestart:\nPressing the restart button will pull the ball back to where it started \n\nBall Release:\nAfter releasing the ball, the start, pause and restart buttons will perform the exact same jobs, but for linear motion instead of circular motion","Controls");
 
         //start button
         buttonStart = new JButton();

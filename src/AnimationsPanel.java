@@ -28,7 +28,7 @@ public class AnimationsPanel extends JPanel{
         ballSpeed = model.getBallSpeed();
         pathRadius = model.getPathRad();
 
-        dialInfo = new Information("Dial Info","Dials: The dials here display the magnitude of different values present in the simulation as well as the direction those values point","Dials");
+        dialInfo = new Information("Dial Info","Dials:\nThe dials here display the magnitude of different values present in the simulation as well as the direction those values point\n\nTeaching Note:\nAfter the release of the ball, the Centripetal acceleration and Centripetal force dials lose there arrows and values since they no longer exist","Dials");
         dialInfo.setBounds(870,29,20,20);
 
         this.add(dialInfo);
