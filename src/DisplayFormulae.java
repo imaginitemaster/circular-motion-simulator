@@ -17,9 +17,11 @@ public class DisplayFormulae extends JPanel {
     String timePVal;
 
     SimulationModel model;
+    Information info;
 
     public DisplayFormulae(SimulationModel model){
         this.model = model;
+        info = new Information("Formulae Info","These formulae are the same as what is provided in the formula booklet (The time period formula is an exception, being a variation of ω=2πf)\nThe formulae update live to the changes in the sliders to help show how they relate\n\nTeaching Note:\nWhen the ball is released, centripetal acceleration (a), centripetal force (F), angular velocity (ω) and time period (T) all become N/A since they only \nexist for circular motion (which doesn't occur when the ball is released)","Formulae");
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -32,6 +34,7 @@ public class DisplayFormulae extends JPanel {
         add(acceleration);
         add(force);
         add(timePeriod);
+        add(info);
     }
 
     public void update(){
@@ -46,8 +49,8 @@ public class DisplayFormulae extends JPanel {
             accelVal = ballSpeed + "² / " + pathRad + " = " + String.format("%.2f",model.getAccelNumValue()) + " m•s⁻²";
             forceVal = ballMass + "•" + ballSpeed + "²" + " / " + pathRad + " = " + String.format("%.2f",model.getForceNumValue()) + " N";
         }else{
-            accelVal =String.format("%.2f",model.getAccelNumValue()) + " m•s⁻²";
-            forceVal = String.format("%.2f",model.getForceNumValue()) + " N";
+            accelVal = "N/A";
+            forceVal = "N/A";
         }
 
         angularVel.setText("ω = v / r  :  " + angVelVal);

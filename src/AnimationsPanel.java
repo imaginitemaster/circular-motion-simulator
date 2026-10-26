@@ -147,18 +147,23 @@ public class AnimationsPanel extends JPanel{
 
 
         velLabel.setText("Velocity");
-        accLabel.setText("Acceleration");
+        accLabel.setText("Centripetal\n Acceleration");
         forLabel.setText("Centripetal Force");
 
         velLabel.setBounds(dialX+12,75,100,20);
-        accLabel.setBounds(dialX+181,75,100,20);
+        accLabel.setBounds(dialX+156,75,150,20);
         forLabel.setBounds(dialX+350,75,100,20);
 
         //m•s⁻¹
         //m•s⁻²
-        velVal.setText(String.format("%.2f",(double)ballSpeed)+" m•s⁻¹");
-        accVal.setText(String.format("%.2f",model.getAccelNumValue())+" m•s⁻²");
-        forVal.setText(String.format("%.2f",model.getForceNumValue())+ " N");
+        velVal.setText(String.format("%.2f",ballSpeed)+" m•s⁻¹");
+        if(model.getCircularPath()){
+            accVal.setText(String.format("%.2f",model.getAccelNumValue())+" m•s⁻²");
+            forVal.setText(String.format("%.2f",model.getForceNumValue())+ " N");
+        }else{
+            accVal.setText("N/A");
+            forVal.setText("N/A");
+        }
 
         velVal.setBounds(dialX+75,24,80,30);
         accVal.setBounds(dialX+255,24,80,30);
