@@ -30,6 +30,11 @@ public class DisplayFormulae extends JPanel {
         force.setAlignmentX(Component.LEFT_ALIGNMENT);
         timePeriod.setAlignmentX(Component.LEFT_ALIGNMENT);
 
+        angularVel.setForeground(Color.BLACK);
+        acceleration.setForeground(Color.MAGENTA);
+        force.setForeground(Color.DARK_GRAY);
+        timePeriod.setForeground(Color.BLACK);
+
         add(angularVel);
         add(acceleration);
         add(force);
