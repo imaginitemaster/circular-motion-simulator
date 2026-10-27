@@ -18,3 +18,6 @@
 ## Assumptions
 - This project assumes that the ball is always in Uniform Circular Motion (unless the ball is released)
 - The project models circular motion in a horizontal plane (meaning gravity is not a component of the centripetal force)
+
+## Limitations
+- When the .jar file is run, the program is about twice as slow as when run in the IDE, an issue I plan to fix in the future.
