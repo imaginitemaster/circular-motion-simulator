@@ -124,6 +124,7 @@ public class SettingsPanel extends JPanel implements ChangeListener, ActionListe
                 speedSlider.setValue(10);
                 radSlider.setValue(10);
             }else{
+                //if reset pressed and its linear motion, send it back to circular motion
                 model.setCircularPath(true);
                 model.setDrawAccel(true);
                 massSlider.setEnabled(true);
@@ -133,6 +134,7 @@ public class SettingsPanel extends JPanel implements ChangeListener, ActionListe
             }
         }
         if(e.getSource()==releaseBall){
+            //release ball
             model.setCircularPath(false);
             model.setPauseLinear(false);
             massSlider.setEnabled(false);

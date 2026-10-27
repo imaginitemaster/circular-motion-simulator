@@ -86,7 +86,7 @@ public class AnimationsPanel extends JPanel{
             paint.setColor(Color.MAGENTA);
             //accel should scale off velocity² and radius
             //in length, 3 represents the number of pixels per m•s⁻²
-            DrawArrow accel = new DrawArrow(cX+ radLength*cos,cY - radLength*sin,-cos,sin, (double) (3*ballSpeed * ballSpeed) /pathRadius,paint);
+            DrawArrow accel = new DrawArrow(cX+ radLength*cos,cY - radLength*sin,-cos,sin,  (3*ballSpeed * ballSpeed) /pathRadius,paint);
         }
 
 

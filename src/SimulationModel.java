@@ -55,7 +55,7 @@ public class SimulationModel {
             ballPos = new double[]{(cX + radLength * cos), (cY - radLength * sin)};
             accelNumValue = (ballSpeed*ballSpeed)/(pathRad);
             forceNumValue = (ballMass*(ballSpeed*ballSpeed)/pathRad);
-            angVelVal = ballSpeed + " / " + pathRad + " = " + String.format("%.2f",(ballSpeed/pathRad)) + " rad•s⁻¹";
+            angVelVal = ballSpeed + " / " + pathRad + " = " + String.format("%.2f",ballSpeed/pathRad) + " rad•s⁻¹";
             timePVal = "2π•" + pathRad + " / " + ballSpeed + " = "  + String.format("%.2f",2*Math.PI*pathRad/ballSpeed) + " s";
             drawAccel =true;
             drawAccelDial = true;
@@ -64,8 +64,8 @@ public class SimulationModel {
             if(!pauseLinear){
                 //refreshes every 0.017 seconds, so multiply by 0.017 to get correct distance travelled at that time. eg 10m/s * 0.017s = 0.17m
                 //then, multiply by 28 to get metres in pixels
-                ballPos[0]-= (sin*ballSpeed)*0.017*28;
-                ballPos[1]-= (cos*ballSpeed)*0.017*28;
+                ballPos[0]-= sin*ballSpeed*0.017*28;
+                ballPos[1]-= cos*ballSpeed*0.017*28;
             }
 
             accelNumValue = 0;

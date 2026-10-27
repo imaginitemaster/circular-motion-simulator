@@ -25,11 +25,13 @@ public class DisplayFormulae extends JPanel {
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+        //align the formulae to the left of their panel
         angularVel.setAlignmentX(Component.LEFT_ALIGNMENT);
         acceleration.setAlignmentX(Component.LEFT_ALIGNMENT);
         force.setAlignmentX(Component.LEFT_ALIGNMENT);
         timePeriod.setAlignmentX(Component.LEFT_ALIGNMENT);
 
+        //change the formulae's colours
         angularVel.setForeground(Color.BLACK);
         acceleration.setForeground(Color.MAGENTA);
         force.setForeground(Color.DARK_GRAY);
@@ -51,9 +53,11 @@ public class DisplayFormulae extends JPanel {
         timePVal = model.getTimePVal();
 
         if(model.getCircularPath()){
+            //if circular motion, give value
             accelVal = ballSpeed + "² / " + pathRad + " = " + String.format("%.2f",model.getAccelNumValue()) + " m•s⁻²";
             forceVal = ballMass + "•" + ballSpeed + "²" + " / " + pathRad + " = " + String.format("%.2f",model.getForceNumValue()) + " N";
         }else{
+            //if linear motion, print N/A
             accelVal = "N/A";
             forceVal = "N/A";
         }
